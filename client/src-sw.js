@@ -4,7 +4,6 @@ const { registerRoute } = require("workbox-routing");
 const { CacheableResponsePlugin } = require("workbox-cacheable-response");
 const { ExpirationPlugin } = require("workbox-expiration");
 const { precacheAndRoute } = require("workbox-precaching/precacheAndRoute");
-const { response } = require("express");
 
 precacheAndRoute(self.__WB_MANIFEST);
 

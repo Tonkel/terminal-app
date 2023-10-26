@@ -13,8 +13,8 @@ module.exports = () => {
     entry: {
       main: "./src/js/index.js",
       install: "./src/js/install.js",
-      // header: "./src/js/header.js",
-      // editor: "./src/js/editor.js",
+      header: "./src/js/header.js",
+      editor: "./src/js/editor.js",
     },
     output: {
       filename: "[name].bundle.js",
@@ -65,12 +65,16 @@ module.exports = () => {
           type: "asset/resource",
         },
         {
-          test: /\.m?js$/,
-          exclude: /(node_modules|bower_components)/,
+          test: /\.(?:js|mjs|cjs)$/,
+          exclude: path.resolve(__dirname, "node_modules"),
           use: {
             loader: "babel-loader",
             options: {
               presets: ["@babel/preset-env"],
+              plugins: [
+                "@babel/plugin-proposal-object-rest-spread",
+                "@babel/transform-runtime",
+              ],
             },
           },
         },
